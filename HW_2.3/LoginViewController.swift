@@ -27,6 +27,13 @@ import UIKit
     @IBAction func fogotPasswordTouchButton() {
         showAlert(title: "Забыли пароль?", messege: "Ваш пароль \(password)")
     }
+        
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if touches.first != nil {
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if userNameTextField.text == userName
@@ -41,9 +48,9 @@ import UIKit
     
     }
     
-        @IBAction func unwind(for segue: UIStoryboardSegue) {
-            userNameTextField.text = ""
-            passwordTextField.text = ""
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        userNameTextField.text = ""
+        passwordTextField.text = ""
         }
 }
 
