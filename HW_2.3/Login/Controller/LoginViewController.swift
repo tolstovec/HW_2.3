@@ -14,8 +14,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet var logInButtonOutlet: UIButton!
     
-    private let userName = "tolstovec"
-    private let password = "tolstovec1"
+    private let userName = logInInfo.loginUserName
+    private let password = logInInfo.loginPassword
+    private let nameSurename = textInfo.nameSurename
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class LoginViewController: UIViewController {
         passwordTextField.delegate = self
     }
     
+    // MARK: Pad
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
@@ -31,9 +33,16 @@ class LoginViewController: UIViewController {
     
     // MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.welcomeLableValue = userName
+        let tabBarController = segue.destination as! UITabBarController
+        for viewController in tabBarController.viewControllers! {
+            if let welcomeVC = viewController as? WelcomeViewController {
+                welcomeVC.user = nameSurename
+            } else if let navigationVC = viewController as? UINavigationController {
+                let aboutUserVC = navigationVC.topViewController as! AboutMeViewController
+                aboutUserVC.user = nameSurename
+            }
         }
+    }
     
     // MARK: @IBAction
     @IBAction func fogotButtonTouch(_ sender: UIButton) {
@@ -57,10 +66,9 @@ class LoginViewController: UIViewController {
         userNameTextField.text = ""
         passwordTextField.text = ""
     }
-    
-    
 }
 
+// MARK: Extension
 extension LoginViewController {
     private func showAlert(title: String, messege: String) {
         let alertLogIn = UIAlertController(title: title, message: messege, preferredStyle: .alert)
