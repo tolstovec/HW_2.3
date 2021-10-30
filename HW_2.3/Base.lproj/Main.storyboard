@@ -19,18 +19,18 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="fU8-8P-V3i">
                                 <rect key="frame" x="40" y="244" width="334" height="94"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="228-cL-oLh">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="228-cL-oLh">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="34"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" systemColor="secondarySystemBackgroundColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next" smartDashesType="no" smartInsertDeleteType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="03t-4n-pJo">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="03t-4n-pJo">
                                         <rect key="frame" x="0.0" y="60" width="334" height="34"/>
                                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="join" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no"/>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -44,7 +44,8 @@
                                             <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="QCk-0b-qcC" kind="presentation" modalPresentationStyle="fullScreen" id="iaN-8I-22M"/>
+                                            <action selector="logInPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="0DG-gQ-FaJ"/>
+                                            <segue destination="QCk-0b-qcC" kind="presentation" identifier="showMeWelcomeVC" modalPresentationStyle="fullScreen" id="iaN-8I-22M"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HeS-SF-MaZ">
@@ -56,10 +57,10 @@
                                             <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="fogotUserNameTouchButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="TeX-i5-chQ"/>
+                                            <action selector="fogotButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Thu-0q-8F1"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPX-Zj-NLP">
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPX-Zj-NLP">
                                         <rect key="frame" x="0.0" y="111" width="334" height="37"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Forgot Password">
@@ -67,7 +68,7 @@
                                             <color key="baseBackgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="fogotPasswordTouchButton" destination="BYZ-38-t0r" eventType="touchUpInside" id="vMc-mV-j1Z"/>
+                                            <action selector="fogotButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wfv-Q3-VlI"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -85,6 +86,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="logInButtonOutlet" destination="v5v-V3-EPp" id="UrS-4O-i8f"/>
                         <outlet property="passwordTextField" destination="03t-4n-pJo" id="f1X-aH-7Qm"/>
                         <outlet property="userNameTextField" destination="228-cL-oLh" id="OGd-nz-fBC"/>
                     </connections>
